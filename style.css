@@ -1675,10 +1675,25 @@ body.home img.home-main {
 .entry-header .bethel-featured-image-wrapper {
 	float: right;
 	margin-left: 1em;
+	width: 360px;
 }
 
 .entry-header .bethel-featured-image-wrapper img {
 	margin-bottom: -8px;
+}
+
+.entry-header .bethel-featured-image-wrapper h1 {
+	margin-top: 14px;
+	margin-top: 1.4rem;
+	line-height: 1.5em;
+}
+
+.entry-header .bethel-featured-image-wrapper h1::before {
+	content: "“";
+}
+
+.entry-header .bethel-featured-image-wrapper h1::after {
+	content: "”";
 }
 
 .bethel_stories .entry-header h1 {
