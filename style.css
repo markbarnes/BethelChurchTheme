@@ -1672,12 +1672,12 @@ body.home img.home-main {
 	margin-bottom: 1.5em;
 }
 
-.entry-header .bethel-stories-wrapper {
+.entry-header .bethel-featured-image-wrapper {
 	float: right;
 	margin-left: 1em;
 }
 
-.entry-header .bethel-stories-wrapper img {
+.entry-header .bethel-featured-image-wrapper img {
 	margin-bottom: -8px;
 }
 
@@ -1711,7 +1711,7 @@ body.home img.home-main {
 	margin-bottom: -8px;
 }
 
-.bethel-stories-caption, .bethel-ministry-caption {
+.bethel-featured-image-caption, .bethel-ministry-caption {
 	font-family: Lato, sans-serif;
 	padding: 10px 40px;
 	padding: 1rem 4rem;
@@ -1754,7 +1754,7 @@ body.home img.home-main {
 	width: 260px;
 }
 
-.story-container .bethel-stories-caption {
+.story-container .bethel-featured-image-caption {
 	width: 380px;
 	float: left;
 	font-weight: bold;
@@ -1764,21 +1764,21 @@ body.home img.home-main {
 	background-color: inherit;
 }
 
-.story-container .bethel-stories-caption a {
+.story-container .bethel-featured-image-caption a {
 	color: #009245;
 }
 
-.story-container .bethel-stories-caption p {
+.story-container .bethel-featured-image-caption p {
 	margin-bottom: 18px;
 	margin-bottom: 1.8rem;
 }
 
-.story-container .bethel-stories-caption p.name {
+.story-container .bethel-featured-image-caption p.name {
 	font-weight: normal;
 	margin-bottom: 0;
 }
 
-.story-container .bethel-stories-caption p.name a {
+.story-container .bethel-featured-image-caption p.name a {
 	color: #009245;
 }
 
