@@ -1406,8 +1406,8 @@ Footer Widgets
 	background-color: #333;
 	color: #999;
 	clear: both;
-	padding: 40px 0 16px;
-	padding: 4rem 0 1.6rem;
+	padding: 40px 0 0;
+	padding: 4rem 0 0;
 }
 
 .footer-widgets-1,
@@ -1473,8 +1473,8 @@ Site Footer
 	color: #999;
 	font-size: 14px;
 	font-size: 1.4rem;
-	padding: 40px 0;
-	padding: 4rem 0;
+	padding: 30px 0;
+	padding: 3rem 0;
 	text-align: center;
 }
 
@@ -1785,6 +1785,31 @@ img.attachment-bethel_column_width {
 	width: 360px;
 }
 
+/* Bethel Events
+--------------------------------------------- */
+
+.widget_bethel_events_whats_on .day {
+	font-family: Lato, sans-serif;
+}
+
+.widget_bethel_events_whats_on .day {
+	font-weight: bold;
+	color: #CCC;
+}
+
+.widget_bethel_events_whats_on .event {
+	font-weight: normal;
+	line-height: 1;
+	margin-left: 10px;
+	margin-left: 1rem;
+	color: #AAA;
+}
+
+.widget_bethel_events_whats_on .event .time {
+	margin-right: 5px;
+	margin-right: 0.5rem;
+}
+
 /*
  	Light Green:		#8CC63F
  	Medium Green: 		#39B54A
@@ -1792,5 +1817,5 @@ img.attachment-bethel_column_width {
  	Blue/Green: 		#16AA9D
  	Dark Blue/Green: 	#128E83
  	Brown: 				#754C24
- 	Light Yellow: 		#FFDA47
+ 	Yellow: 			#FFDA47
 */
