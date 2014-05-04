@@ -134,10 +134,10 @@ html {
 
 body {
 	color: #333;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	font-size: 1.6em;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 1.625;
 }
 
@@ -858,18 +858,20 @@ Site Navigation
 .genesis-nav-menu {
 	clear: both;
 	color: #999;
-	font-family: Montserrat, sans-serif;
+	font-family: Bebas, sans-serif;
 	line-height: 1.25;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
 }
 
 .genesis-nav-menu .menu-item {
 	display: block;
 	text-align: center;
-	width: 33.3%;
+	width: 380px;
 	border-left: 1px solid #16AA9D;
 	float:left;
-	padding: 28px 24px;
-	padding: 2.8rem 2.4rem;
+	padding: 24px 24px;
+	padding: 2.4rem 2.4rem;
 }
 
 .genesis-nav-menu .menu-item:first-child {
@@ -881,14 +883,14 @@ Site Navigation
 	font-family: Lato, sans-serif;
 	font-size: 14px;
 	text-transform:lowercase;
-	font-weight: normal;
+	font-weight: 300;
 }
 
 .genesis-nav-menu a {
 	border: none;
 	color: #fff;
-	font-weight: 700;
-	font-size: 18px;
+	font-size: 33px;
+	font-size: 3.3rem;
 	display: block;
 	position: relative;
 }
@@ -911,6 +913,10 @@ body.home .genesis-nav-menu .sub-menu {
 	height: 615px;
 	width: 1140px;
 	opacity: 1;
+}
+
+body.home .genesis-nav-menu .menu-item .sub-menu, body.home .genesis-nav-menu .menu-item:first-child .sub-menu, body.home .genesis-nav-menu .menu-item:last-child .sub-menu {
+	width: 1140px;
 }
 
 body.home .genesis-nav-menu .menu-item:hover > .sub-menu {
@@ -950,11 +956,13 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 	-ms-transition:     opacity .4s ease-in-out;
 	-o-transition:      opacity .4s ease-in-out;
 	transition:         opacity .4s ease-in-out;
-	width: 380px;
+	width: 382px;
 	z-index: 99;
 	background-color: white;
 	border: 1px solid #16AA9D;
 	border-top: none;
+	font-family: Lato, sans-serif;
+	font-weight: 700;
 }
 
 .genesis-nav-menu .sub-menu .menu-item {
@@ -985,7 +993,7 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 }
 
 .genesis-nav-menu .menu-item:hover .sub-menu a {
-	color: #16AA9D;
+	color: #128E83;
 }
 
 .genesis-nav-menu .sub-menu .menu-item:hover {
@@ -994,7 +1002,7 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 }
 
 .genesis-nav-menu .sub-menu .menu-item:hover a {
-	color: #39B54A;
+	color: #16AA9D;     
 }
 
 .genesis-nav-menu .sub-menu .sub-menu {
@@ -1005,7 +1013,7 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 	position: static;
 	background-color: #16AA9D;
 	cursor:pointer;
-	border:none;
+
 }
 
 .genesis-nav-menu .menu-item:hover a {
@@ -1019,10 +1027,21 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 .genesis-nav-menu .menu-item:hover > .sub-menu {
 	left: auto;
 	opacity: 1;
+	margin-left: -26px;
+	margin-left: -2.6rem;
+	margin-top: 24px;
+	margin-top: 2.4rem;
+	width: 383px;
+}
+
+.genesis-nav-menu .menu-item:hover:first-child > .sub-menu {
 	margin-left: -24px;
 	margin-left: -2.4rem;
-	margin-top: 28px;
-	margin-top: 2.8rem;
+	width: 382px;
+}
+
+.genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
+	width: 381px;
 }
 
 .genesis-nav-menu > .first > a {
@@ -1086,18 +1105,6 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 	color: #333;
 }
 
-.nav-primary .current-menu-item, .nav-primary .current-menu-ancestor {
-	background-color: #009245;
-}
-
-.nav-primary .current-menu-item:hover, .nav-primary .current-menu-ancestor:hover {
-	background-color: #39B54A;
-}
-
-.nav-primary .sub-menu .current-menu-item {
-	background-color: inherit;
-}
-
 /* Secondary Navigation
 --------------------------------------------- */
 
@@ -1132,11 +1139,12 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 
 .nav-secondary li.menu-item  a {
 	color: #009245;
-	font-size: 16px;
+	font-size: 24px;
+	font-size: 2.4rem;
 }
 
 .nav-secondary li.menu-item:hover a {
-	color: #754C24;
+	color: #8CC63F;
 }
 /*
 Content Area
@@ -1360,7 +1368,7 @@ Sidebars
 ---------------------------------------------------------------------------------------------------- */
 
 .sidebar {
-	color: #666;
+	color: #999;
 }
 
 .sidebar a {
@@ -1787,7 +1795,7 @@ body.home img.home-main {
 }
 
 .story-container .bethel-featured-image-caption p.name {
-	font-weight: normal;
+	font-weight: 300;
 	margin-bottom: 0;
 }
 
@@ -1812,7 +1820,7 @@ img.attachment-bethel_column_width {
 }
 
 .widget_bethel_events_whats_on .event {
-	font-weight: normal;
+	font-weight: 300;
 	line-height: 1;
 	margin-left: 10px;
 	margin-left: 1rem;
@@ -1840,7 +1848,7 @@ img.attachment-bethel_column_width {
 }
 
 .ministry_events ul.day li {
-	font-weight: normal;
+	font-weight: 300;
 }
 /*
  	Light Green:		#8CC63F
