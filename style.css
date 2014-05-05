@@ -1916,8 +1916,8 @@ body.hide-title .entry-title {
 
 .bethel-subpages-nav {
 	width: 740px;
-	padding: 40px 0 12px 40px;
-	padding: 4rem 0 1.2rem 4rem;
+	padding: 40px 40px 12px 40px;
+	padding: 4rem 4rem 1.2rem 4rem;
 	margin-bottom: -26px;
 	margin-bottom: -2.6rem;
 	background-color: white;
