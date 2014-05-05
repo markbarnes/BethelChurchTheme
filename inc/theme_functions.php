@@ -112,7 +112,6 @@ function get_menu_items_for_current_page () {
 			foreach ($pages as $page) {
 				if ($page->object_id == $post->ID) {
 					$menu_parent = $page->menu_item_parent;
-					break;
 				}
 			}
 			if ($menu_parent !== FALSE) {
@@ -126,5 +125,22 @@ function get_menu_items_for_current_page () {
 				return $items;
 			}
 		}
+	}
+}
+
+/**
+* Adds the featured image to the top of posts
+*/
+function bethel_add_image_to_posts() {
+	global $post;
+	if ($post) {
+		echo "<div class=\"bethel-featured-image-wrapper\">";
+		the_post_thumbnail('bethel_column_width');
+		$caption = apply_filters ('bethel_featured_image_caption', '');
+		if ($caption != '') {
+			echo "<div class=\"bethel-featured-image-caption\">{$caption}</div>";
+		}
+		do_action ('bethel_after_featured_image');
+		echo "</div>";
 	}
 }
