@@ -9,4 +9,14 @@
 	font-style: normal;
 }
 
-/* Icon fonts created by www.icomoon.io */
+/* Nasty hack to fix rendering problems in Chrome, forcing it to use the SVG version */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	@font-face {
+		font-family: 'bethel-icons';
+		src: url('bethel-icons/bethel-icons.svg?b2iigi#icomoon') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+/* Icon font created by www.icomoon.io */
