@@ -84,3 +84,47 @@ function bethel_add_admin_css() {
 	</style>
 EOT;
 }
+
+function bethel_add_submenu_to_post() {
+	global $post;
+	$menu_items = get_menu_items_for_current_page();
+	if ($menu_items) {
+		echo '<ul class="bethel-subpages-nav">';
+		foreach ($menu_items as $menu_item) {
+			echo '<li'.($menu_item == $post->ID ? ' class="current-item"' : '').">";
+			echo '<a href="'.get_permalink($menu_item).'">'.get_the_title ($menu_item).'</a>';
+			echo '</li>';
+		}
+		echo '</ul>';
+	}
+}
+
+function get_menu_items_for_current_page () {
+	global $post;
+	if (!$post->ID) {
+		return;
+	}
+	$locations = get_nav_menu_locations();
+	if (isset($locations['primary'])) {
+		$pages = wp_get_nav_menu_items($locations['primary']);
+		if ($pages) {
+			$menu_parent = false;
+			foreach ($pages as $page) {
+				if ($page->object_id == $post->ID) {
+					$menu_parent = $page->menu_item_parent;
+					break;
+				}
+			}
+			if ($menu_parent !== FALSE) {
+				$items = array();
+				foreach ($pages as $page) {
+					if ($page->menu_item_parent == $menu_parent && $page->object == 'page') {
+						$items[$page->menu_order] = $page->object_id;
+					}
+				}
+				ksort($items);
+				return $items;
+			}
+		}
+	}
+}

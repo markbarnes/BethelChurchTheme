@@ -6,7 +6,7 @@ require ('inc/theme_functions.php');
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Custom theme for Bethel, Clydach' );
 define( 'CHILD_THEME_URL', 'http://www.studiopress.com/' );
-define( 'CHILD_THEME_VERSION', '2.0.1' );
+define( 'CHILD_THEME_VERSION', '0.1' );
 
 /**
 * Add theme support
@@ -36,6 +36,7 @@ add_action( 'genesis_site_title', 'genesis_do_subnav', 1 ); // Add subnav just b
 add_action( 'genesis_site_title', 'bethel_do_logo' ); // Add the logo header
 add_action( 'genesis_after_header', 'bethel_filter_menu_items', 0 );
 add_action( 'genesis_after_header', 'bethel_stop_filtering_menu_items', 15 );
+add_action( 'genesis_before_entry', 'bethel_add_submenu_to_post', 0);
 add_action ('admin_head', 'bethel_add_favicons');
 add_action ('admin_head', 'bethel_add_admin_css');
 
