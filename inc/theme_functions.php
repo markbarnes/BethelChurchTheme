@@ -95,8 +95,8 @@ function bethel_add_submenu_to_post() {
 	if ($menu_items) {
 		echo '<ul class="bethel-subpages-nav">';
 		foreach ($menu_items as $menu_item) {
-			echo '<li'.($menu_item == $post->ID ? ' class="current-item"' : '').">";
-			echo '<a href="'.get_permalink($menu_item).'">'.get_the_title ($menu_item).'</a>';
+			echo '<li'.($menu_item->object_id == $post->ID ? ' class="current-item"' : '').">";
+			echo "<a href=\"{$menu_item->url}\">{$menu_item->title}</a>";
 			echo '</li>';
 		}
 		echo '</ul>';
@@ -122,7 +122,7 @@ function get_menu_items_for_current_page () {
 				$items = array();
 				foreach ($pages as $page) {
 					if ($page->menu_item_parent == $menu_parent && $page->object == 'page') {
-						$items[$page->menu_order] = $page->object_id;
+						$items[$page->menu_order] = $page;
 					}
 				}
 				ksort($items);
