@@ -45,3 +45,4 @@ add_action ('admin_head', 'bethel_add_admin_css');
 * Add filters
 */
 add_filter('genesis_footer_creds_text', 'bethel_footer'); //* Change the footer text
+add_filter ('wp_nav_menu_args', 'bethel_restrict_depth_of_primary_menu');

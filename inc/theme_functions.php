@@ -144,3 +144,11 @@ function bethel_add_image_to_posts() {
 		echo "</div>";
 	}
 }
+
+function bethel_restrict_depth_of_primary_menu ($args) {
+	$a=1;
+	if ($args['theme_location'] == 'primary') {
+		$args['depth'] = 3;
+	}
+	return $args;
+}
