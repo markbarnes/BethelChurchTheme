@@ -4,8 +4,13 @@
 * 
 */
 function bethel_enqueue_fonts() {
-	wp_enqueue_style( 'google-font-lato', '//fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic,400italic,700italic', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'bethel-font-bebas', get_stylesheet_directory_uri().'/fonts/bebas.css', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style ('google-font-lato', '//fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic,400italic,700italic', array(), CHILD_THEME_VERSION);
+	wp_enqueue_style ('bethel-font-bebas', get_stylesheet_directory_uri().'/fonts/bebas.css', array(), CHILD_THEME_VERSION);
+	wp_enqueue_style ('bethel-font-icons', get_stylesheet_directory_uri()."/fonts/bethel-icons.css", array(), CHILD_THEME_VERSION);
+}
+
+function bethel_admin_enqueue_fonts() {
+	wp_enqueue_style ('bethel-font-icons', get_stylesheet_directory_uri()."/fonts/bethel-icons.css", array(), CHILD_THEME_VERSION);
 }
 
 function bethel_get_default_background_args() {
@@ -67,4 +72,15 @@ function bethel_add_login_logo() {
 	echo "\t\twidth: 186px;\r\n";
 	echo "\t}\r\n";
 	echo "</style>";
+}
+
+function bethel_add_admin_css() {
+	echo <<<EOT
+	<style type="text/css">
+		#wpadminbar #wp-admin-bar-site-name>.ab-item:before {
+			font-family: 'bethel-icons';
+			content: "\\e600";
+		}
+	</style>
+EOT;
 }

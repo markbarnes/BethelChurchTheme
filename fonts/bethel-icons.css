@@ -1,0 +1,12 @@
+@font-face {
+	font-family: 'bethel-icons';
+	src:url('bethel-icons/bethel-icons.eot?b2iigi');
+	src:url('bethel-icons/bethel-icons.eot?#iefixb2iigi') format('embedded-opentype'),
+		url('bethel-icons/bethel-icons.woff?b2iigi') format('woff'),
+		url('bethel-icons/bethel-icons.ttf?b2iigi') format('truetype'),
+		url('bethel-icons/bethel-icons.svg?b2iigi#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Icon fonts created by www.icomoon.io */

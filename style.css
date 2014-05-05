@@ -1850,6 +1850,12 @@ img.attachment-bethel_column_width {
 .ministry_events ul.day li {
 	font-weight: 300;
 }
+
+#wpadminbar #wp-admin-bar-site-name>.ab-item:before {
+	font-family: 'bethel-icons';
+	content: "\e600";
+}
+
 /*
  	Light Green:		#8CC63F
  	Medium Green: 		#39B54A

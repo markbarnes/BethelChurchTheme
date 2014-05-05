@@ -29,6 +29,7 @@ unregister_sidebar( 'header-right' ); // Remove the right header widget area
 * Add actions
 */
 add_action( 'wp_enqueue_scripts', 'bethel_enqueue_fonts' ); // Enqueue fonts
+add_action ('admin_enqueue_scripts', 'bethel_admin_enqueue_fonts');
 add_action ('login_enqueue_scripts', 'bethel_add_login_logo'); // Add CSS for login logo
 add_action( 'genesis_meta', 'bethel_add_favicons'); // Add favicons
 add_action( 'genesis_site_title', 'genesis_do_subnav', 1 ); // Add subnav just before the site title
@@ -36,6 +37,7 @@ add_action( 'genesis_site_title', 'bethel_do_logo' ); // Add the logo header
 add_action( 'genesis_after_header', 'bethel_filter_menu_items', 0 );
 add_action( 'genesis_after_header', 'bethel_stop_filtering_menu_items', 15 );
 add_action ('admin_head', 'bethel_add_favicons');
+add_action ('admin_head', 'bethel_add_admin_css');
 
 /**
 * Add filters
