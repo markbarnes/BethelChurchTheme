@@ -31,7 +31,7 @@ function bethel_stop_filtering_menu_items() {
 function bethel_add_menu_subtitles ($string) {
 	if (substr($string, 3, 7) == 'title="') {
 		$title = substr($string, 10, strpos($string, '"', 11)-10);
-		$string = "{$string}<span class=\"subtitle\">{$title}</span>";
+		$string = "{$string}<br/><span class=\"subtitle\">{$title}</span>";
 	}
 	return $string;
 }

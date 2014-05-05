@@ -861,7 +861,7 @@ Site Navigation
 	clear: both;
 	color: #999;
 	font-family: Bebas, sans-serif;
-	line-height: 1.25;
+	line-height: 1;
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
 }
@@ -893,8 +893,6 @@ Site Navigation
 	color: #fff;
 	font-size: 33px;
 	font-size: 3.3rem;
-	display: block;
-	position: relative;
 }
 
 .genesis-nav-menu a:hover,
@@ -975,12 +973,17 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 	text-align: left;
 }
 
-.genesis-nav-menu .sub-menu .menu-item:first-child a {
+.genesis-nav-menu .sub-menu .menu-item {
+	padding: 10px 20px;
+	padding: 1rem 2rem;
+}
+
+.genesis-nav-menu .sub-menu .menu-item:first-child {
 	padding-top: 20px;
 	padding-top: 2rem;
 }
 
-.genesis-nav-menu .sub-menu .menu-item:last-child a {
+.genesis-nav-menu .sub-menu .menu-item:last-child {
 	padding-bottom: 20px;
 	padding-bottom: 2rem;
 }
@@ -988,9 +991,6 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 .genesis-nav-menu .sub-menu a {
 	font-size: 14px;
 	font-size: 1.4rem;
-	padding: 10px 20px;
-	padding: 1rem 2rem;
-	position: relative;
 	color: #009245;
 }
 
