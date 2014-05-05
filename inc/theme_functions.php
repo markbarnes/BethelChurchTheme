@@ -62,6 +62,10 @@ function bethel_add_favicons() {
 	echo "<meta name=\"msapplication-config\" content=\"".get_stylesheet_directory_uri()."/images/favicons/browserconfig.xml\">\r\n";
 }
 
+function bethel_add_viewport() {
+	echo "<meta name=\"viewport\" content=\"width=1200\">\r\n";
+}
+
 function bethel_add_login_logo() {
 	echo "<style type=\"text/css\">\r\n";
 	echo "\tbody.login div#login h1 a {\r\n";
