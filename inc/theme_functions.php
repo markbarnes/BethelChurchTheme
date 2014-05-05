@@ -4,7 +4,7 @@
 * 
 */
 function bethel_enqueue_fonts() {
-	wp_enqueue_style ('google-font-lato', '//fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic,400italic,700italic', array(), CHILD_THEME_VERSION);
+	wp_enqueue_style ('bethel-font-lato', get_stylesheet_directory_uri().'/fonts/lato.css', array(), CHILD_THEME_VERSION);
 	wp_enqueue_style ('bethel-font-bebas', get_stylesheet_directory_uri().'/fonts/bebas.css', array(), CHILD_THEME_VERSION);
 	wp_enqueue_style ('bethel-font-icons', get_stylesheet_directory_uri()."/fonts/bethel-icons.css", array(), CHILD_THEME_VERSION);
 }
@@ -37,7 +37,7 @@ function bethel_add_menu_subtitles ($string) {
 }
 
 function bethel_footer( $creds ) {
-	return '<strong>Bethel Evangelical Church</strong>, Heol-y-nant, Clydach &nbsp;&bull;&nbsp; <strong>Tel:</strong> 01792 828095 &nbsp;&bull;&nbsp; <strong>Registered charity:</strong> 1142690';
+	return '<span class="bethel-tree-icon"></span> &nbsp;<strong>Bethel Evangelical Church, Heol-y-nant, Clydach</strong><br/>Tel: 01792 828095 &nbsp;&nbsp;&nbsp; Registered charity: 1142690';
 }
 
 function bethel_do_logo() {
