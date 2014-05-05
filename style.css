@@ -824,8 +824,9 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header .wrap {
-	padding: 40px 0 20px 0;
-	padding: 4rem 0 2rem 0;
+	padding: 20px 0 0 0;
+	padding: 2rem 0 0 0;
+	line-height: normal;
 }
 
 /* Widget Area
@@ -870,7 +871,7 @@ Site Navigation
 	display: block;
 	text-align: center;
 	width: 380px;
-	border-left: 1px solid #16AA9D;
+	border-left: 1px solid #39B54A;
 	float:left;
 	padding: 24px 24px;
 	padding: 2.4rem 2.4rem;
@@ -1093,7 +1094,7 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 --------------------------------------------- */
 
 .nav-primary {
-	background-color: #128E83;
+	background-color: #009245;
 	max-width: 1140px;
 	margin: 0 auto;
 }
@@ -1128,7 +1129,9 @@ body.home .genesis-nav-menu .menu-item:hover:last-child > .sub-menu {
 .nav-secondary li.menu-item  {
 	text-align: right;
 	width: auto;
-	padding: 0 2em;
+	padding: 0 20px;
+	padding: 0 2rem;
+	border-color: #009245;
 }
 
 .nav-secondary li.menu-item:hover {
