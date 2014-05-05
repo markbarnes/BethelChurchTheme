@@ -41,7 +41,7 @@ function bethel_footer( $creds ) {
 }
 
 function bethel_do_logo() {
-	echo "<a href=\"".home_url()."\"><img src=\"".get_stylesheet_directory_uri()."/images/logo.png\" width=\"600\" height=\"133\" title=\"Bethel Evangelical Church, Clydach\" alt=\"Bethel Evangelical Church, Clydach\"/></a>";
+	echo "<a href=\"".home_url()."\"><img src=\"".get_stylesheet_directory_uri()."/images/logo.png\" width=\"600\" height=\"139\" title=\"Bethel Evangelical Church, Clydach\" alt=\"Bethel Evangelical Church, Clydach\"/></a>";
 }
 
 function bethel_add_favicons() {
