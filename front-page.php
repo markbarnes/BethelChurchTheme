@@ -13,6 +13,9 @@ add_action('genesis_loop', 'bethel_do_home_page'); // Add in our elements
 
 function bethel_do_home_page() {
 	echo '<img class="home-main" src="'.get_stylesheet_directory_uri().'/images/people.jpg" height="615" width="1140"/>';
+	echo '<img style="display:none" class="home-main" src="'.get_stylesheet_directory_uri().'/images/everyone-welcome.jpg" height="615" width="1140"/>';
+	echo '<img style="display:none" class="home-main" src="'.get_stylesheet_directory_uri().'/images/something-for-everyone.jpg" height="615" width="1140"/>';
+	echo '<img style="display:none" class="home-main" src="'.get_stylesheet_directory_uri().'/images/ordinary-people.jpg" height="615" width="1140"/>';
 }
 
 genesis();

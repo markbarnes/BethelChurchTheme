@@ -1014,7 +1014,7 @@ body.home .genesis-nav-menu .menu-item:hover .sub-menu .sub-menu {
 	cursor:pointer;
 }
 
-.genesis-nav-menu .sub-menu .menu-item:hover a {
+.genesis-nav-menu .sub-menu .menu-item:hover>a {
 	color: #16AA9D;     
 }
 
@@ -1735,11 +1735,19 @@ body.home img.home-main {
 .entry-header .bethel-featured-image-wrapper {
 	float: right;
 	margin-left: 1em;
-	width: 360px;
+	max-width: 360px;
+}
+
+.featured-image-left .entry-header .bethel-featured-image-wrapper {
+	float: left;
+	margin-left: 0;
+	margin-right: 1em;
 }
 
 .entry-header .bethel-featured-image-wrapper img {
 	margin-bottom: -8px;
+	max-width: 360px;
+	max-height: 360px;
 }
 
 .entry-header .bethel-featured-image-wrapper h1 {
@@ -1858,7 +1866,7 @@ body.home img.home-main {
 }
 
 img.attachment-bethel_column_width {
-	width: 360px;
+	max-width: 360px;
 }
 
 /* Bethel Events
@@ -1955,6 +1963,14 @@ body.hide-title .entry-title {
 
 .bethel-subpages-nav .current-item a {
 	color: #8CC63F;
+}
+
+.bethel-navigation-previous {
+	float:left;
+}
+
+.bethel-navigation-next {
+	float:right;
 }
 
 /*
