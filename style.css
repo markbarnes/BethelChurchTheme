@@ -1736,10 +1736,48 @@ body.home img.home-main {
 	margin-bottom: 1.5em;
 }
 
+.entry-header {
+	margin: -40px -40px 40px -40px;
+	width: 740px;
+	position: relative;
+	background-size: cover;
+}
+
+.entry-header .entry-title {
+	color: white;
+	width: 740px;
+	padding: 10px 20px 10px 40px;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0;
+	background-color: #009245;
+	background-color: rgba(0,146,69,0.85);
+	font-size: 50px;
+	font-size: 5rem;
+	font-weight: 300;
+	text-shadow: 1px 1px 0.25px rgba(0,0,0,0.5);
+}
+
 .entry-header .bethel-featured-image-wrapper {
 	float: right;
 	margin-left: 1em;
 	max-width: 360px;
+}
+
+.entry-header .bethel-featured-image-wrapper .entry-title {
+	float: right;
+	margin-left: 1em;
+	max-width: 360px;
+	color: #009245;
+	padding: 0;
+	position: static;
+	background-color: transparent;
+	font-size: 24px;
+	font-weight: 700;
+	text-shadow: none;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-bottom: 1rem;
 }
 
 .featured-image-left .entry-header .bethel-featured-image-wrapper {
@@ -1751,8 +1789,7 @@ body.home img.home-main {
 .entry-header .bethel-featured-image-wrapper img {
 	margin-bottom: -8px;
 	max-width: 360px;
-	max-height: 360px;
-}
+	max-height: 360px;}
 
 .entry-header .bethel-featured-image-wrapper h1 {
 	margin-top: 14px;
@@ -1937,6 +1974,7 @@ body.hide-title .entry-title {
 	font-family: Bebas;
 	font-size: 24px;
 	font-size: 2.4rem;
+	display: none;
 }
 
 .bethel-subpages-nav li {

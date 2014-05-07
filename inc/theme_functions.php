@@ -133,11 +133,36 @@ function get_menu_items_for_current_page () {
 }
 
 /**
-* Adds the featured image to the top of posts
+* Adds the featured image to the top of pages (not stories)
 */
-function bethel_add_image_to_posts() {
+function bethel_add_image_to_pages() {
 	global $post;
 	if ($post) {
+		$image_id = get_post_thumbnail_id ($post->ID);
+		if ($image_id) {
+			if ($post->post_type != 'bethel_stories') {
+				$image = wp_get_attachment_image_src($image_id, 'bethel_supersize');
+				if ($image) {
+					if ($image[1] < 740) { //width
+						$image[2] = round($image [2] / $image[1] * 740);
+					}
+					$image[2] = ($image[2] > 360) ? 360 : $image[2]; //height
+					echo "<style type=\"text/css\">.entry-header { height: {$image[2]}px; background-image: url('{$image[0]}')}</style>";
+					return;
+				}
+			}
+		} else {
+			echo "<style type=\"text/css\">.content .entry-header { margin: 35px -40px 60px -40px }</style>";
+		}
+	}
+}
+
+/**
+* Adds the featured image to the top of stories
+*/
+function bethel_add_image_to_stories() {
+	global $post;
+	if ($post && $post->post_type=='bethel_stories') {
 		echo "<div class=\"bethel-featured-image-wrapper\">";
 		the_post_thumbnail('bethel_column_width');
 		$caption = apply_filters ('bethel_featured_image_caption', '');
