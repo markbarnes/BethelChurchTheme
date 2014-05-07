@@ -156,3 +156,11 @@ function bethel_restrict_depth_of_primary_menu ($args) {
 	}
 	return $args;
 }
+
+function bethel_choose_image_sizes ($sizes) {
+	$bethel_sizes = array 	('bethel_column_width' => 'Half-width',
+							 'bethel_full_width' => 'Full-width',
+							 'bethel_supersize' => 'Supersize',
+							);
+	return array_merge ($sizes, $bethel_sizes);
+}

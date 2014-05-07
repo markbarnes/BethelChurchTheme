@@ -47,3 +47,11 @@ add_action ('admin_head', 'bethel_add_admin_css');
 */
 add_filter('genesis_footer_creds_text', 'bethel_footer'); //* Change the footer text
 add_filter ('wp_nav_menu_args', 'bethel_restrict_depth_of_primary_menu');
+add_filter ('image_size_names_choose', 'bethel_choose_image_sizes');
+
+/**
+* Add image sizes
+*/
+add_image_size ('bethel_column_width', 360);
+add_image_size ('bethel_full_width', 660);
+add_image_size ('bethel_supersize', 740);
