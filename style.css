@@ -1238,14 +1238,18 @@ Content Area
 
 .entry-content ol li {
 	list-style-type: decimal;
+	margin-left: 40px;
+	margin-left: 4rem;
+	margin-bottom: 13px;
+	margin-bottom: 1.3rem;
 }
 
 .entry-content ul li {
 	list-style-type: disc;
 	margin-left: 40px;
 	margin-left: 4rem;
-}
-
+	margin-bottom: 13px;
+	margin-bottom: 1.3rem;
 }
 
 .entry-content ol ol,
@@ -1965,12 +1969,21 @@ body.hide-title .entry-title {
 	color: #8CC63F;
 }
 
+ul.child_list li {
+	margin-bottom: 0;
+}
+
 .bethel-navigation-previous {
 	float:left;
 }
 
 .bethel-navigation-next {
 	float:right;
+}
+
+img.size-bethel_supersize {
+	max-width: 740px;
+	margin-left: -40px;
 }
 
 /*
