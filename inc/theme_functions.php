@@ -5,7 +5,7 @@
 */
 function bethel_enqueue_fonts() {
 	wp_enqueue_style ('bethel-font-lato', get_stylesheet_directory_uri().'/fonts/lato.css', array(), CHILD_THEME_VERSION);
-	wp_enqueue_style ('bethel-font-bebas', get_stylesheet_directory_uri().'/fonts/bebas.css', array(), CHILD_THEME_VERSION);
+	//wp_enqueue_style ('bethel-font-bebas', get_stylesheet_directory_uri().'/fonts/bebas.css', array(), CHILD_THEME_VERSION);
 	wp_enqueue_style ('bethel-font-icons', get_stylesheet_directory_uri()."/fonts/bethel-icons.css", array(), CHILD_THEME_VERSION);
 }
 
@@ -152,7 +152,7 @@ function bethel_add_image_to_pages() {
 				}
 			}
 		} else {
-			echo "<style type=\"text/css\">.content .entry-header { margin: 35px -40px 60px -40px }</style>";
+			echo "<style type=\"text/css\">.content .entry-header { margin: 35px -40px 75px -40px }</style>";
 		}
 	}
 }

@@ -37,8 +37,8 @@ add_action( 'genesis_site_title', 'genesis_do_subnav', 1 ); // Add subnav just b
 add_action( 'genesis_site_title', 'bethel_do_logo' ); // Add the logo header
 add_action( 'genesis_after_header', 'bethel_filter_menu_items', 0 );
 add_action( 'genesis_after_header', 'bethel_stop_filtering_menu_items', 15 );
-add_action( 'genesis_before_entry', 'bethel_add_submenu_to_post', 0);
 add_action ('genesis_entry_header', 'bethel_add_image_to_stories', 9);
+add_action( 'genesis_entry_content', 'bethel_add_submenu_to_post', 9);
 add_action ('genesis_meta', 'bethel_add_image_to_pages', 11);
 add_action ('admin_head', 'bethel_add_favicons');
 add_action ('admin_head', 'bethel_add_admin_css');
