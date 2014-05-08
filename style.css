@@ -894,6 +894,7 @@ Site Navigation
 	color: #fff;
 	font-size: 33px;
 	font-size: 3.3rem;
+	font-weight: 300;
 }
 
 .genesis-nav-menu a:hover,
@@ -999,6 +1000,7 @@ body.home .genesis-nav-menu .menu-item:hover .sub-menu .sub-menu {
 	font-size: 14px;
 	font-size: 1.4rem;
 	color: #009245;
+	font-weight: 700;
 }
 
 .genesis-nav-menu .menu-item:hover .sub-menu a {
