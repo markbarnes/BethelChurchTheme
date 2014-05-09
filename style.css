@@ -1495,12 +1495,11 @@ Footer Widgets
 }
 
 .footer-widgets a {
-	border-bottom: 1px solid #666;
 	color: #999;
 }
 
 .footer-widgets a:hover {
-	color: #ddd;
+	color: white;
 }
 
 .footer-widgets .widget {
@@ -1547,6 +1546,10 @@ Site Footer
 
 .site-footer p {
 	margin-bottom: 0;
+}
+
+.site-footer .footer-line-1 {
+	color: #CCC;
 }
 
 
@@ -1934,7 +1937,15 @@ img.attachment-bethel_column_width {
 	line-height: 1;
 	margin-left: 10px;
 	margin-left: 1rem;
-	color: #AAA;
+	color: #CCC;
+}
+
+.widget_bethel_events_whats_on .event a {
+	color: #CCC;
+}
+
+.widget_bethel_events_whats_on .event a:hover {
+	color: white;
 }
 
 .widget_bethel_events_whats_on .event .time {

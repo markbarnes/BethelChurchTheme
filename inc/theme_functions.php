@@ -37,7 +37,7 @@ function bethel_add_menu_subtitles ($string) {
 }
 
 function bethel_footer( $creds ) {
-	return '<span class="bethel-tree-icon"></span> &nbsp;<strong>Bethel Evangelical Church, Heol-y-nant, Clydach</strong><br/>Tel: 01792 828095 &nbsp;&nbsp;&nbsp; Registered charity: 1142690';
+	return '<span class="footer-line-1"><span class="bethel-tree-icon"></span> &nbsp;<strong>Bethel Evangelical Church, Heol-y-nant, Clydach</strong></span><br/><span class="footer-line-2">Tel: 01792 828095 &nbsp;&nbsp;&nbsp; Registered charity: 1142690</span>';
 }
 
 function bethel_do_logo() {
