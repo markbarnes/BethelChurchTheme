@@ -2047,7 +2047,37 @@ img.size-bethel_supersize {
 #bethel-header-right-top {
 	float:right;
 	position: absolute;
-	right:0;
+	right: 0;
+	bottom: 90px;
+	max-width: 500px;
+}
+
+.widget_bethel_events_whats_next .now-on {
+	font-weight: 700;
+}
+
+.widget_bethel_events_whats_next .now-on {
+	font-weight: 700;
+	color: #009245;
+}
+
+.widget_bethel_events_whats_next .whats-next, .widget_bethel_events_whats_next .whats-next a {
+	color: #754C24
+}
+
+.widget_bethel_events_whats_next .whats-next a:hover {
+	color: #8CC63F
+}
+
+.widget_bethel_events_whats_next .day, .widget_bethel_events_whats_next .time {
+	margin-right: 5px;
+	margin-right: 0.5rem;
+}
+
+.widget_bethel_events_whats_next .time:after {
+	margin-left: 5px;
+	margin-left: 0.5rem;
+	content: "—";
 }
 
 
