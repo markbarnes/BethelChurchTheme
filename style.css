@@ -1946,7 +1946,7 @@ img.attachment-bethel_column_width {
 	color: white;
 }
 
-.widget_bethel_events_whats_on .event .time {
+.widget_bethel_events_whats_on .event .time, .ministry_events .event .time {
 	margin-right: 5px;
 	margin-right: 0.5rem;
 }

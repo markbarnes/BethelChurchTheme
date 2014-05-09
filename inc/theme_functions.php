@@ -121,7 +121,7 @@ function get_menu_items_for_current_page () {
 			if ($menu_parent !== FALSE) {
 				$items = array();
 				foreach ($pages as $page) {
-					if ($page->menu_item_parent == $menu_parent && $page->object == 'page') {
+					if ($page->menu_item_parent == $menu_parent && ($page->object == 'page' || $page->object == 'bethel_ministries')) {
 						$items[$page->menu_order] = $page;
 					}
 				}
