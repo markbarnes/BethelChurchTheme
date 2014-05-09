@@ -92,7 +92,7 @@ EOT;
 function bethel_add_submenu_to_post() {
 	global $post;
 	$menu_items = get_menu_items_for_current_page();
-	if ($menu_items) {
+	if ($menu_items && sizeof($menu_items) > 1) {
 		echo '<ul class="bethel-subpages-nav">';
 		foreach ($menu_items as $menu_item) {
 			echo '<li'.($menu_item->object_id == $post->ID ? ' class="current-item"' : '').">";
