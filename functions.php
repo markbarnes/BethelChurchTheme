@@ -23,8 +23,7 @@ remove_action( 'genesis_meta', 'genesis_responsive_viewport' );
 remove_action( 'genesis_site_title', 'genesis_seo_site_title' ); // Remove the site title
 remove_action( 'genesis_site_description', 'genesis_seo_site_description' ); // Remove the subtitle
 remove_action( 'genesis_after_header', 'genesis_do_subnav' ); // Remove the subnav from below the header
-unregister_sidebar( 'header-right' ); // Remove the right header widget area
-
+remove_action( 'genesis_footer', 'genesis_do_footer' );
 /**
 * Add actions
 */
@@ -33,12 +32,14 @@ add_action ('admin_enqueue_scripts', 'bethel_admin_enqueue_fonts');
 add_action ('login_enqueue_scripts', 'bethel_add_login_logo'); // Add CSS for login logo
 add_action( 'genesis_meta', 'bethel_add_favicons'); // Add favicons
 add_action( 'genesis_meta', 'bethel_add_viewport' );
-add_action( 'genesis_site_title', 'genesis_do_subnav', 1 ); // Add subnav just before the site title
-add_action( 'genesis_site_title', 'bethel_do_logo' ); // Add the logo header
+add_action( 'genesis_site_title', 'bethel_do_logo' , 10); // Add the logo header
+add_action( 'genesis_site_title', 'bethel_do_header_right_top', 11); // Add "next on"
+add_action( 'genesis_site_title', 'genesis_do_subnav', 12); // Add subnav
 add_action( 'genesis_after_header', 'bethel_filter_menu_items', 0 );
 add_action( 'genesis_after_header', 'bethel_stop_filtering_menu_items', 15 );
 add_action ('genesis_entry_header', 'bethel_add_image_to_stories', 9);
 add_action( 'genesis_entry_content', 'bethel_add_submenu_to_post', 9);
+add_action ('genesis_footer', 'bethel_do_footer_bottom');
 add_action ('genesis_meta', 'bethel_add_image_to_pages', 11);
 add_action ('admin_head', 'bethel_add_favicons');
 add_action ('admin_head', 'bethel_add_admin_css');
@@ -56,3 +57,5 @@ add_filter ('image_size_names_choose', 'bethel_choose_image_sizes');
 add_image_size ('bethel_column_width', 360);
 add_image_size ('bethel_full_width', 660);
 add_image_size ('bethel_supersize', 740);
+
+bethel_register_widget_areas();

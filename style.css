@@ -1158,18 +1158,15 @@ body.home .genesis-nav-menu .menu-item:hover .sub-menu .sub-menu {
 --------------------------------------------- */
 
 .nav-secondary {
+	position: absolute;
+	right:0;
+	bottom: 38px;
 	float:right;
 }
 
 .nav-secondary .wrap {
 	padding: 0;
-	height: 133px;
 	display:table;
-}
-
-.nav-secondary .menu-secondary {
-	margin-top: 80px;
-	font-weight: 700;
 }
 
 .nav-secondary li.menu-item  {
@@ -1192,6 +1189,7 @@ body.home .genesis-nav-menu .menu-item:hover .sub-menu .sub-menu {
 	color: #754C24;
 	font-size: 20px;
 	font-size: 2rem;
+	font-weight: 400;
 }
 
 .nav-secondary li.menu-item:hover a {
@@ -2035,6 +2033,24 @@ img.size-bethel_supersize {
 	font-style: italic;
 	font-size: 18px;	
 }
+
+.title-area {
+	position: relative;
+	float:left;
+	width: 100%;
+}
+
+.title-area a.logo_header {
+	float:left;
+}
+
+#bethel-header-right-top {
+	float:right;
+	position: absolute;
+	right:0;
+}
+
+
 
 /*
  	Light Green:		#8CC63F

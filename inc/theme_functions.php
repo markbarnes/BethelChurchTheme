@@ -41,7 +41,7 @@ function bethel_footer( $creds ) {
 }
 
 function bethel_do_logo() {
-	echo "<a href=\"".home_url()."\"><img src=\"".get_stylesheet_directory_uri()."/images/logo.png\" width=\"600\" height=\"139\" title=\"Bethel Evangelical Church, Clydach\" alt=\"Bethel Evangelical Church, Clydach\"/></a>";
+	echo "<a class=\"logo_header\" href=\"".home_url()."\"><img src=\"".get_stylesheet_directory_uri()."/images/logo.png\" width=\"600\" height=\"139\" title=\"Bethel Evangelical Church, Clydach\" alt=\"Bethel Evangelical Church, Clydach\"/></a>";
 }
 
 function bethel_add_favicons() {
@@ -188,4 +188,18 @@ function bethel_choose_image_sizes ($sizes) {
 							 'bethel_supersize' => 'Supersize',
 							);
 	return array_merge ($sizes, $bethel_sizes);
+}
+
+function bethel_register_widget_areas() {
+	unregister_sidebar( 'header-right' ); // Remove the right header widget area
+	genesis_register_sidebar (array ('id' => 'header-right-top', 'name' => 'Header Right Top', 'description' => 'The upper widget to the right of the header image.'));	
+	genesis_register_sidebar (array ('id' => 'footer-bottom', 'name' => 'Footer Bottom', 'description' => 'Full-width widget at the very bottom of the page.'));	
+}
+
+function bethel_do_header_right_top() {
+	genesis_widget_area ('header-right-top', array ('before' => '<div id="bethel-header-right-top">', 'after' => '</div>'));
+}
+
+function bethel_do_footer_bottom() {
+	genesis_widget_area ('footer-bottom', array ('before' => '<div id="bethel-header-right-bottom">', 'after' => '</div>'));
 }
