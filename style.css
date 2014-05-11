@@ -198,26 +198,24 @@ ul {
 	padding: 0;
 }
 
-blockquote,
-blockquote::before {
-	color: #999;
-}
-
 blockquote {
 	margin: 40px 40px 24px;
 	margin: 4rem 4rem 2.4rem;
+	color: #666;
 }
 
 blockquote::before {
 	content: "\201C";
 	display: block;
-	font-size: 30px;
-	font-size: 3rem;
+	font-size: 50px;
+	font-size: 5rem;
 	height: 0;
 	left: -20px;
 	position: relative;
-	top: -10px;
+	top: -20px;
+	color: #128E83;
 }
+
 
 .entry-content code {
 	background-color: #333;
@@ -1228,8 +1226,8 @@ Content Area
 .entry-content p,
 .entry-content ul,
 .quote-caption {
-	margin-bottom: 26px;
-	margin-bottom: 2.6rem;
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
 }
 
 .entry-content ol li {
@@ -1877,6 +1875,7 @@ body.home img.home-main {
 .story-container a {
 	border-bottom: none;
 }
+
 
 .story-container .image-container img {
 	margin-bottom: -7px;

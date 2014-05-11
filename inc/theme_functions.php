@@ -146,7 +146,7 @@ function bethel_add_image_to_pages() {
 					if ($image[1] < 740) { //width
 						$image[2] = round($image [2] / $image[1] * 740);
 					}
-					$image[2] = ($image[2] > 360) ? 360 : $image[2]; //height
+					$image[2] = ($image[2] > 370) ? 370 : $image[2]; //height
 					echo "<style type=\"text/css\">.entry-header { height: {$image[2]}px; background-image: url('{$image[0]}')}</style>";
 					return;
 				}
