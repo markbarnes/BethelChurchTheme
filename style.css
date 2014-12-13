@@ -1723,6 +1723,7 @@ body.home main {
 	position: relative;
 	background-size: cover;
 	background-position: center center;
+    overflow: hidden;
 }
 
 .entry-header .entry-title {
@@ -2132,10 +2133,18 @@ ul.sermon-widget .sermon-title a {
 Galleries
 ---------------------------------------------------------------------------------------------------- */
 
-body.bethel-gallery header.entry-header {
+body.bethel-gallery header.entry-header,
+body.bethel-gallery div#gallery-overlay {
     height: 548px;
-    background-color: #333;
     background-position: center;
+}
+
+body.bethel-gallery header.entry-header {
+    background-color: #333;
+}
+
+body.bethel-gallery div#gallery-overlay {
+    background-size: cover;
 }
 
 /*
