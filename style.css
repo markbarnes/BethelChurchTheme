@@ -2149,6 +2149,9 @@ body.bethel-gallery div#gallery-overlay {
 
 ul.gallery_list li {
     list-style-type: none;
+    margin-left: 0;
+    display: inline;
+    float:left;
 }
     
 ul.gallery_list a {

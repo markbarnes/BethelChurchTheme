@@ -447,7 +447,7 @@ function bethel_gallery_list($atts) {
     if ($child_pages) {
         $output =  "<ul class=\"gallery_list\">";
         foreach ($child_pages as $page) {
-            $thumbnail = wp_get_attachment_image_src (get_post_thumbnail_id($page->ID), 'bethel_column_width');
+            $thumbnail = wp_get_attachment_image_src (get_post_thumbnail_id($page->ID), 'bethel_narrow_column');
             if ($thumbnail) {
                 $height = $thumbnail[2];
                 if ($height > 216) {
