@@ -1723,7 +1723,6 @@ body.home main {
 	position: relative;
 	background-size: cover;
 	background-position: center center;
-    overflow: hidden;
 }
 
 .entry-header .entry-title {
@@ -2141,6 +2140,7 @@ body.bethel-gallery div#gallery-overlay {
 
 body.bethel-gallery header.entry-header {
     background-color: #333;
+    overflow: hidden;
 }
 
 body.bethel-gallery div#gallery-overlay {
