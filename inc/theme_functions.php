@@ -437,3 +437,20 @@ function bethel_add_back_to_parent_link() {
         echo "<a href=\"".get_permalink($post->post_parent)."\">&laquo Back to {$parent->post_title}</a>";
     }
 }
+
+function bethel_gallery_list($atts) {
+    global $post;
+    if (!$post) {
+        return;
+    }
+    $child_pages = get_posts (array('post_type' => $post->post_type, 'post_parent' => $post->ID, 'order_by' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1));
+    if ($child_pages) {
+        $output =  "<ul class=\"gallery_list\">";
+        foreach ($child_pages as $page) {
+            $thumbnail = wp_get_attachment_image (get_post_thumbnail_id($page->ID), 'bethel_column_width');
+            $output .= "<li><a style=\"max-height: 216px;overflow:hidden;display:block\" href=\"".get_permalink($page->ID)."\">{$thumbnail}</a></li>";
+        }
+        $output .= "</ul>";
+        return $output;
+    }
+}

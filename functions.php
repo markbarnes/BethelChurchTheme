@@ -74,3 +74,4 @@ bethel_register_widget_areas();
 * Add shortcodes
 */
 add_shortcode ('pullquote', 'bethel_pullquote');
+add_shortcode ('gallery_list', 'bethel_gallery_list' );
