@@ -29,7 +29,7 @@ function bethel_add_frontend_javascript() {
         wp_enqueue_script('bethel-frontend', get_stylesheet_directory_uri().'/js/frontend.js', array('jquery'), '0.1', true);
         wp_localize_script('bethel-frontend', 'bethel', array('siteurl'=>site_url()));
     }
-    if ((is_page() || is_single) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
+    if ((is_page() || is_single()) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
         wp_enqueue_script('jquery');
         add_action ('wp_print_footer_scripts', 'bethel_add_gallery_js_to_footer');
     }
@@ -355,7 +355,7 @@ function bethel_add_gallery_js_to_footer() {
 
 function bethel_add_gallery_filters() {
     global $post;
-    if ((is_page() || is_single) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
+    if ((is_page() || is_single()) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
         add_filter ('body_class', 'bethel_add_gallery_to_body_class');
         add_filter ('shortcode_atts_gallery', 'bethel_filter_gallery_atts', 10, 3);
         add_action ('genesis_entry_footer', 'bethel_add_back_to_parent_link');
