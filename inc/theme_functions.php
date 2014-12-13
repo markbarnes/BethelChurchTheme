@@ -358,6 +358,7 @@ function bethel_add_gallery_filters() {
     if ((is_page() || is_single) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
         add_filter ('body_class', 'bethel_add_gallery_to_body_class');
         add_filter ('shortcode_atts_gallery', 'bethel_filter_gallery_atts', 10, 3);
+        add_action ('genesis_entry_footer', 'bethel_add_back_to_parent_link');
         //The following filters aren't really filtering. They're just convenient places to run our own code.
         add_filter ('gallery_style', 'bethel_add_filter_to_gallery_images'); // This filter runs during the gallery shortcode
         add_filter ('genesis_edit_post_link', 'bethel_remove_filter_from_gallery_images'); // This filter runs at the end of a post
@@ -427,4 +428,12 @@ function bethel_filter_gallery_atts ($out, $pairs, $atts) {
     }
     $out['link'] = 'none';
     return $out;
+}
+
+function bethel_add_back_to_parent_link() {
+    global $post;
+    if ((is_single() || is_page()) && $post->post_parent) {
+        $parent = get_post($post->post_parent);
+        echo "<a href=\"".get_permalink($post->post_parent)."\">&laquo Back to {$parent->post_title}</a>";
+    }
 }
