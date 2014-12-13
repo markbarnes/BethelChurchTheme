@@ -2147,6 +2147,30 @@ body.bethel-gallery div#gallery-overlay {
     background-size: cover;
 }
 
+ul.gallery_list li {
+    list-style-type: none;
+}
+    
+ul.gallery_list a {
+    background-position:center;
+    display:block;
+    width: 360px;
+    position: relative;
+}
+
+ul.gallery_list a span.title {
+    position: absolute;
+    bottom: 0;
+    background-color: #009245;
+    background-color: rgba(0,146,69,0.85);
+    text-shadow: 1px 1px 0.25px rgba(0,0,0,0.5);
+    font-weight: 300;
+    font-size: 24px;
+    padding: 5px 10px;
+    color:white;
+    width: 100%;
+}
+
 /*
  	Light Green:		#8CC63F (140,198,63)
  	Medium Green: 		#39B54A (57,181,74)
