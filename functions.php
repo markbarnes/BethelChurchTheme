@@ -29,6 +29,7 @@ remove_action( 'genesis_footer', 'genesis_do_footer' ); // Remove the default fo
 /**
 * Add actions
 */
+add_action ('wp_head', 'bethel_add_gallery_filters');
 add_action( 'wp_enqueue_scripts', 'bethel_enqueue_fonts' ); // Enqueue fonts
 add_action( 'wp_enqueue_scripts', 'bethel_add_frontend_javascript' );
 add_action ('admin_enqueue_scripts', 'bethel_admin_enqueue_fonts');
@@ -55,7 +56,6 @@ add_filter('genesis_footer_creds_text', 'bethel_footer'); //* Change the footer 
 add_filter ('wp_nav_menu_args', 'bethel_restrict_depth_of_primary_menu'); // Restricts the menu menu to two levels
 add_filter ('image_size_names_choose', 'bethel_choose_image_sizes'); 
 add_filter ('genesis_edit_post_link', create_function ('$args', 'return false;'));
-add_filter ('gallery_style', 'bethel_add_filter_to_gallery_images');
 
 /**
 * Add image sizes

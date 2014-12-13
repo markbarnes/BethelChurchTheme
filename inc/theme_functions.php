@@ -29,11 +29,9 @@ function bethel_add_frontend_javascript() {
         wp_enqueue_script('bethel-frontend', get_stylesheet_directory_uri().'/js/frontend.js', array('jquery'), '0.1', true);
         wp_localize_script('bethel-frontend', 'bethel', array('siteurl'=>site_url()));
     }
-    if ((strpos ($post->post_content, '[gallery ') !== FALSE)) {
+    if ((is_page() || is_single) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
         wp_enqueue_script('jquery');
         add_action ('wp_print_footer_scripts', 'bethel_add_gallery_js_to_footer');
-        add_filter ('shortcode_atts_gallery', 'bethel_filter_gallery_atts', 10, 3);
-        add_filter ('body_class', 'bethel_add_gallery_to_body_class');
     }
 }
 
@@ -345,6 +343,28 @@ function bethel_pullquote ($atts, $content = NULL) {
 }
 
 /**
+* Adds javascript to the footer on gallery pages
+* 
+* Called on the wp_print_footer_scripts action
+*/
+function bethel_add_gallery_js_to_footer() {
+    echo "<script type=\"text/javascript\">\r\n";
+    include ('gallery.js.php');
+    echo "</script>\r\n";
+}
+
+function bethel_add_gallery_filters() {
+    global $post;
+    if ((is_page() || is_single) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
+        add_filter ('body_class', 'bethel_add_gallery_to_body_class');
+        add_filter ('shortcode_atts_gallery', 'bethel_filter_gallery_atts', 10, 3);
+        //The following filters aren't really filtering. They're just convenient places to run our own code.
+        add_filter ('gallery_style', 'bethel_add_filter_to_gallery_images'); // This filter runs during the gallery shortcode
+        add_filter ('genesis_edit_post_link', 'bethel_remove_filter_from_gallery_images'); // This filter runs at the end of a post
+    }
+}
+
+/**
 * Adds the 'gallery' class to the body tag
 * 
 * Filters body_class
@@ -358,17 +378,6 @@ function bethel_add_gallery_to_body_class ($classes) {
 }
 
 /**
-* Adds javascript to the footer on gallery pages
-* 
-* Called on the wp_print_footer_scripts action
-*/
-function bethel_add_gallery_js_to_footer() {
-    echo "<script type=\"text/javascript\">\r\n";
-    include ('gallery.js.php');
-    echo "</script>\r\n";
-}
-
-/**
 * Adds a filter to gallery images
 * 
 * Filters gallery_style (or, more accurately, actions during the filter)
@@ -378,8 +387,20 @@ function bethel_add_gallery_js_to_footer() {
 */
 function bethel_add_filter_to_gallery_images ($style) {
     add_filter ('wp_get_attachment_image_attributes', 'bethel_filter_image_attributes_for_gallery', 10, 2);
-    add_filter ('genesis_edit_post_link', 'bethel_remove_filter_from_gallery_images'); // This filter runs at the end of a post
     return $style;
+}
+
+/**
+* Removes the filter from gallery images
+* 
+* Filters genesis_edit_post_link (or, more accurately, actions during the filter)
+* 
+* @param boolean $edit
+* @return boolean
+*/
+function bethel_remove_filter_from_gallery_images ($edit) {
+    remove_filter ('wp_get_attachment_image_attributes', 'bethel_filter_image_attributes_for_gallery', 10, 2);
+    return $edit;
 }
 
 /**
@@ -394,11 +415,6 @@ function bethel_filter_image_attributes_for_gallery ($attr, $attachment) {
     return $attr;
 }
 
-function bethel_remove_filter_from_gallery_images ($edit) {
-    remove_filter ('wp_get_attachment_image_attributes', 'bethel_filter_image_attributes_for_gallery', 10, 2);
-    return $edit;
-}
-
 function bethel_filter_gallery_atts ($out, $pairs, $atts) {
     $ids = $out ['include'];
     if ($ids) {
@@ -409,5 +425,6 @@ function bethel_filter_gallery_atts ($out, $pairs, $atts) {
         }
         $bethel_gallery_urls = json_encode ($urls);
     }
+    $out['link'] = 'none';
     return $out;
 }
