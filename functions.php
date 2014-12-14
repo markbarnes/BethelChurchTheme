@@ -56,6 +56,7 @@ add_filter('genesis_footer_creds_text', 'bethel_footer'); //* Change the footer 
 add_filter ('wp_nav_menu_args', 'bethel_restrict_depth_of_primary_menu'); // Restricts the menu menu to two levels
 add_filter ('image_size_names_choose', 'bethel_choose_image_sizes'); 
 add_filter ('genesis_edit_post_link', create_function ('$args', 'return false;'));
+add_filter ('sidebars_widgets', 'bethel_randomize_widget_order');
 
 /**
 * Add image sizes

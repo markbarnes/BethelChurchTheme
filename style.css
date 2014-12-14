@@ -1704,13 +1704,6 @@ Media Queries
 
 }
 
-@media screen and (max-height:800px) {
-    .genesis-nav-menu .sub-menu .sub-menu .menu-item a {
-        padding-top: 7.5px;
-        padding-bottom: 3.75px;
-    }
-}
-
 /*
 ---------------------------------------------------------------------------------------------------- */
 

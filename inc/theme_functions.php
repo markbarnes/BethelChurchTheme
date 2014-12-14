@@ -459,3 +459,11 @@ function bethel_gallery_list($atts) {
         return $output;
     }
 }
+
+function bethel_randomize_widget_order($sidebars_widgets) {
+    $sidebar = 'sidebar';
+    if (isset($sidebars_widgets[$sidebar]) && !isadmin()) {
+        shuffle ($sidebars_widgets[$sidebar]);
+    }
+    return $sidebars_widgets;
+}
