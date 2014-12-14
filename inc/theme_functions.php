@@ -422,7 +422,8 @@ function bethel_filter_gallery_atts ($out, $pairs, $atts) {
         global $bethel_gallery_urls;
         $ids = explode (',', $ids);
         foreach ($ids as $id) {
-            $urls["i{$id}"] = wp_get_attachment_url($id, 'bethel_supersize');
+            $urls["i{$id}"] = wp_get_attachment_image_src($id, 'bethel_supersize');
+            $urls["i{$id}"] = $urls["i{$id}"][0];
         }
         $bethel_gallery_urls = json_encode ($urls);
     }
