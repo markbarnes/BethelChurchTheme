@@ -2149,16 +2149,27 @@ body.bethel-gallery div#gallery-overlay {
 
 ul.gallery_list li {
     list-style-type: none;
-    margin-left: 0;
     display: inline;
     float:left;
+    margin-bottom: 20px;
+}
+
+ul.gallery_list li:nth-child(odd) {
+    margin-left: 0;
+    margin-right: 10px;
+}
+    
+ul.gallery_list li:nth-child(even) {
+    margin-right: 0;
+    margin-left: 10px;
 }
     
 ul.gallery_list a {
     background-position:center;
     display:block;
-    width: 360px;
+    width: 350px;
     position: relative;
+    background-size: cover;
 }
 
 ul.gallery_list a span.title {
