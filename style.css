@@ -2168,6 +2168,7 @@ ul.gallery_list a {
     background-position:center;
     display:block;
     width: 350px;
+    height: 175px;
     position: relative;
     background-size: cover;
 }

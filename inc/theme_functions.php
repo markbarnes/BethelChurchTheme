@@ -449,13 +449,10 @@ function bethel_gallery_list($atts) {
         $output =  "<ul class=\"gallery_list\">";
         foreach ($child_pages as $page) {
             $thumbnail = wp_get_attachment_image_src (get_post_thumbnail_id($page->ID), 'bethel_narrow_column');
-            if ($thumbnail) {
-                $height = $thumbnail[2];
-                if ($height > 216) {
-                    $height = 216;
-                }
-                $output .= "<li><a style=\"height:216px;background-image:url('".$thumbnail[0]."')\" href=\"".get_permalink($page->ID)."\"><span class=\"title\">{$page->post_title}</span></a></li>";
+            if (!$thumbnail) {
+                $thumbnail = wp_get_attachment_image_src (get_post_thumbnail_id($post->ID), 'bethel_narrow_column');
             }
+            $output .= "<li><a style=\"background-image:url('".$thumbnail[0]."')\" href=\"".get_permalink($page->ID)."\"><span class=\"title\">{$page->post_title}</span></a></li>";
         }
         $output .= "</ul>";
         return $output;
