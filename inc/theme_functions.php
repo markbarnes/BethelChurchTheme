@@ -75,7 +75,7 @@ function bethel_stop_filtering_menu_items() {
 function bethel_add_menu_subtitles ($string) {
 	if (substr($string, 3, 7) == 'title="') {
 		$title = substr($string, 10, strpos($string, '"', 11)-10);
-		$string = "{$string}<br/><span class=\"subtitle\">{$title}</span>";
+		$string = substr($string,0,-4)."<br/><span class=\"subtitle\">{$title}</span></a>";
 	}
 	return $string;
 }
@@ -130,7 +130,7 @@ function bethel_add_favicons() {
 * Called by the genesis_meta action
 */
 function bethel_add_viewport() {
-	echo "<meta name=\"viewport\" content=\"width=1200\">\r\n";
+	echo "<meta name=\"viewport\" content=\"width=1280\">\r\n";
 }
 
 /**
