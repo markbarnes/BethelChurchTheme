@@ -444,6 +444,7 @@ function bethel_gallery_list($atts) {
     if (!$post) {
         return;
     }
+    $class = isset($atts['class']) ? " class=\"{$atts['class']}\"" : ''; 
     $child_pages = get_posts (array('post_type' => $post->post_type, 'post_parent' => $post->ID, 'order_by' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1));
     if ($child_pages) {
         $output =  "<ul class=\"gallery_list\">";
@@ -452,7 +453,7 @@ function bethel_gallery_list($atts) {
             if (!$thumbnail) {
                 $thumbnail = wp_get_attachment_image_src (get_post_thumbnail_id($post->ID), 'bethel_narrow_column');
             }
-            $output .= "<li><a style=\"background-image:url('".$thumbnail[0]."')\" href=\"".get_permalink($page->ID)."\"><span class=\"title\">{$page->post_title}</span></a></li>";
+            $output .= "<li{$class}><a style=\"background-image:url('".$thumbnail[0]."')\" href=\"".get_permalink($page->ID)."\"><span class=\"title\">{$page->post_title}</span></a></li>";
         }
         $output .= "</ul>";
         return $output;

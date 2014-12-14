@@ -2173,6 +2173,10 @@ ul.gallery_list a {
     background-size: cover;
 }
 
+ul.gallery_list li.higher a {
+    height: 233px;
+}
+
 ul.gallery_list a span.title {
     position: absolute;
     bottom: 0;
