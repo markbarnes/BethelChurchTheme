@@ -2,7 +2,7 @@ jQuery(function($) {
     /**
     * Interactive menu on home page
     */
-    $('body.home .nav-primary .genesis-nav-menu > .menu-item > .sub-menu').height(615);
+    $('body.home .nav-primary .genesis-nav-menu > .menu-item > .sub-menu').height(614);
     $('body.home .nav-primary .genesis-nav-menu > .menu-item:nth-child(2)').hover(
         function() {
             $('main').css('background-image', 'url(\''+bethel.siteurl+'/wp-content/themes/bethel-clydach/images/something-for-everyone.jpg\')')
