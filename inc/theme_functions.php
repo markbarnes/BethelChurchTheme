@@ -462,7 +462,7 @@ function bethel_gallery_list($atts) {
 
 function bethel_randomize_widget_order($sidebars_widgets) {
     $sidebar = 'sidebar';
-    if (isset($sidebars_widgets[$sidebar]) && !isadmin()) {
+    if (isset($sidebars_widgets[$sidebar]) && !is_admin()) {
         shuffle ($sidebars_widgets[$sidebar]);
     }
     return $sidebars_widgets;
