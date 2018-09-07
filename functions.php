@@ -6,7 +6,7 @@ require ('inc/theme_functions.php');
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Bethel, Clydach' );
 define( 'CHILD_THEME_URL', 'http://www.markbarnes.net/' );
-define( 'CHILD_THEME_VERSION', '0.1' );
+define( 'CHILD_THEME_VERSION', '0.11.1' );
 
 /**
 * Add theme support
@@ -48,15 +48,16 @@ add_action ('genesis_meta', 'bethel_add_image_to_pages', 11);
 add_action ('admin_head', 'bethel_add_favicons');
 add_action ('admin_head', 'bethel_add_admin_css');
 add_action ('template_redirect', 'bethel_custom_template');
+add_action ('genesis_after_footer', 'bethel_move_jquery');
 
 /**
 * Add filters
 */
-add_filter('genesis_footer_creds_text', 'bethel_footer'); //* Change the footer text
 add_filter ('wp_nav_menu_args', 'bethel_restrict_depth_of_primary_menu'); // Restricts the menu menu to two levels
 add_filter ('image_size_names_choose', 'bethel_choose_image_sizes'); 
 add_filter ('genesis_edit_post_link', create_function ('$args', 'return false;'));
 add_filter ('sidebars_widgets', 'bethel_randomize_widget_order');
+add_filter ('widget_text', 'do_shortcode');
 
 /**
 * Add image sizes
@@ -65,6 +66,7 @@ add_image_size ('bethel_narrow_column', 360);
 add_image_size ('bethel_column_width', 400);
 add_image_size ('bethel_full_width', 720);
 add_image_size ('bethel_supersize', 800);
+add_image_size ('bethel_fullscreen', 1920, 1080);
 
 /**
 * Register widget areas
@@ -76,3 +78,4 @@ bethel_register_widget_areas();
 */
 add_shortcode ('pullquote', 'bethel_pullquote');
 add_shortcode ('gallery_list', 'bethel_gallery_list' );
+add_shortcode ('admin_url', 'bethel_admin_url');

@@ -30,9 +30,10 @@ function bethel_add_frontend_javascript() {
         wp_localize_script('bethel-frontend', 'bethel', array('siteurl'=>site_url()));
     }
     if ((is_page() || is_single()) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
-        wp_enqueue_script('jquery');
-        add_action ('wp_print_footer_scripts', 'bethel_add_gallery_js_to_footer');
+        wp_enqueue_script('bethel_gallery', get_stylesheet_directory_uri().'/js/colorbox/jquery.colorbox'.(WP_DEBUG ? '.js' : '-min.js'), 'jquery', '1.6.0', true);
+        wp_enqueue_style('bethel_gallery', get_stylesheet_directory_uri().'/js/colorbox/colorbox.css');
     }
+    //add_action ('wp_print_footer_scripts', 'bethel_viewport_js_to_footer');
 }
 
 /**
@@ -81,18 +82,6 @@ function bethel_add_menu_subtitles ($string) {
 }
 
 /**
-* Displays the footer
-* 
-* Filters genesis_footer_creds_text
-* 
-* @param mixed $creds
-* @return mixed
-*/
-function bethel_footer ($creds) {
-	return '<span class="footer-line-1"><span class="bethel-tree-icon"></span> &nbsp;<strong>Bethel Evangelical Church, Heol-y-nant, Clydach</strong></span><br/><span class="footer-line-2">Tel: 01792 828095 &nbsp;&nbsp;&nbsp; Registered charity: 1142690</span>';
-}
-
-/**
 * Displays the logo in the header
 * 
 * Called by the genesis_site_title action
@@ -130,7 +119,7 @@ function bethel_add_favicons() {
 * Called by the genesis_meta action
 */
 function bethel_add_viewport() {
-	echo "<meta name=\"viewport\" content=\"width=1280\">\r\n";
+	echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n";
 }
 
 /**
@@ -161,7 +150,7 @@ function bethel_add_admin_css() {
 	<style type="text/css">
 		#wpadminbar #wp-admin-bar-site-name>.ab-item:before {
 			font-family: 'bethel-icons';
-			content: "\\e600";
+			content: "\\e600" !important;
 		}
 	</style>
 EOT;
@@ -183,7 +172,18 @@ function bethel_add_submenu_to_post() {
 			echo '</li>';
 		}
 		echo '</ul>';
-	}
+	} elseif (is_page() && $post->post_parent) {
+        $menu_items = get_pages (array('parent' => $post->post_parent, 'sort_order' => 'menu_order', 'hierarchical' => false));
+        if ($menu_items && sizeof($menu_items) > 1) {
+            echo '<ul class="bethel-subpages-nav">';
+            foreach ($menu_items as $menu_item) {
+                echo '<li'.($menu_item->ID == $post->ID ? ' class="current-item"' : '').">";
+                echo '<a href="'.get_permalink($menu_item->ID)."\">{$menu_item->post_title}</a>";
+                echo '</li>';
+            }
+            echo '</ul>';
+        }
+    }
 }
 
 /**
@@ -240,7 +240,10 @@ function bethel_add_image_to_pages() {
 				}
 			}
 		} else {
-			echo "<style type=\"text/css\">.content .entry-header { margin: 35px -40px 75px -40px }</style>";
+			echo "<style type=\"text/css\">
+                .content .entry-header { margin-top: 75px; margin-top: 7.5rem }
+                .content .entry-content { padding-top: 25px; padding-top: 2.5rem; }
+            </style>";
 		}
 	}
 }
@@ -324,8 +327,8 @@ function bethel_do_footer_bottom() {
 * Called by the template_redirect action
 */
 function bethel_custom_template() {
-    if (is_page()) {
-        global $post;
+    global $post;
+    if (is_page() && isset($post) && is_object($post)) {
         $post->page_template = get_post_meta( $post->ID, '_wp_page_template', true );
     }
 }
@@ -342,23 +345,12 @@ function bethel_pullquote ($atts, $content = NULL) {
     return "<aside{$att_string}><span class=\"left-quote\">&ldquo;</span>{$content}<span class=\"right-quote\">&rdquo;</span></aside>";
 }
 
-/**
-* Adds javascript to the footer on gallery pages
-* 
-* Called on the wp_print_footer_scripts action
-*/
-function bethel_add_gallery_js_to_footer() {
-    echo "<script type=\"text/javascript\">\r\n";
-    include ('gallery.js.php');
-    echo "</script>\r\n";
-}
-
 function bethel_add_gallery_filters() {
     global $post;
     if ((is_page() || is_single()) && (strpos ($post->post_content, '[gallery ') !== FALSE)) {
         add_filter ('body_class', 'bethel_add_gallery_to_body_class');
-        add_filter ('shortcode_atts_gallery', 'bethel_filter_gallery_atts', 10, 3);
         add_action ('genesis_entry_footer', 'bethel_add_back_to_parent_link');
+        add_action ('wp_print_footer_scripts', 'bethel_add_gallery_js', 15);
         //The following filters aren't really filtering. They're just convenient places to run our own code.
         add_filter ('gallery_style', 'bethel_add_filter_to_gallery_images'); // This filter runs during the gallery shortcode
         add_filter ('genesis_edit_post_link', 'bethel_remove_filter_from_gallery_images'); // This filter runs at the end of a post
@@ -388,6 +380,7 @@ function bethel_add_gallery_to_body_class ($classes) {
 */
 function bethel_add_filter_to_gallery_images ($style) {
     add_filter ('wp_get_attachment_image_attributes', 'bethel_filter_image_attributes_for_gallery', 10, 2);
+    add_filter ('wp_get_attachment_link', 'bethel_filter_attachment_link_for_gallery', 10, 6);
     return $style;
 }
 
@@ -401,6 +394,7 @@ function bethel_add_filter_to_gallery_images ($style) {
 */
 function bethel_remove_filter_from_gallery_images ($edit) {
     remove_filter ('wp_get_attachment_image_attributes', 'bethel_filter_image_attributes_for_gallery', 10, 2);
+    remove_filter ('wp_get_attachment_link', 'bethel_filter_attachment_link_for_gallery', 10, 6);
     return $edit;
 }
 
@@ -416,19 +410,22 @@ function bethel_filter_image_attributes_for_gallery ($attr, $attachment) {
     return $attr;
 }
 
-function bethel_filter_gallery_atts ($out, $pairs, $atts) {
-    $ids = $out ['include'];
-    if ($ids) {
-        global $bethel_gallery_urls;
-        $ids = explode (',', $ids);
-        foreach ($ids as $id) {
-            $urls["i{$id}"] = wp_get_attachment_image_src($id, 'bethel_supersize');
-            $urls["i{$id}"] = $urls["i{$id}"][0];
-        }
-        $bethel_gallery_urls = json_encode ($urls);
-    }
-    $out['link'] = 'none';
-    return $out;
+/**
+* Filters the link in galleries
+* 
+* Allows us to limit the maximum size of the linked image
+* 
+* @param mixed $link
+* @param mixed $id
+* @param mixed $size
+* @param mixed $permalink
+* @param mixed $icon
+* @param mixed $text
+*/
+function bethel_filter_attachment_link_for_gallery ($link, $id, $size, $permalink, $icon, $text) {
+    $original_url = wp_get_attachment_url ($id);
+    $new_url = wp_get_attachment_image_src ($id, 'bethel_fullscreen');
+    return str_replace($original_url, $new_url[0], $link);
 }
 
 function bethel_add_back_to_parent_link() {
@@ -437,6 +434,10 @@ function bethel_add_back_to_parent_link() {
         $parent = get_post($post->post_parent);
         echo "<a href=\"".get_permalink($post->post_parent)."\">&laquo Back to {$parent->post_title}</a>";
     }
+}
+
+function bethel_add_gallery_js() {
+    echo "<script>jQuery('img.gallery-thumbnail').parent('a').colorbox({maxWidth:'90%',maxHeight:'90%',rel:'group1',current:'{current} of {total}'});</script>\r\n";
 }
 
 function bethel_gallery_list($atts) {
@@ -460,10 +461,51 @@ function bethel_gallery_list($atts) {
     }
 }
 
+function bethel_admin_url ($atts) {
+    return admin_url();
+}
+
 function bethel_randomize_widget_order($sidebars_widgets) {
     $sidebar = 'sidebar';
     if (isset($sidebars_widgets[$sidebar]) && !is_admin()) {
         shuffle ($sidebars_widgets[$sidebar]);
     }
     return $sidebars_widgets;
+}
+
+function bethel_viewport_js_to_footer () {
+     echo <<<EOT
+     <script type="text/javascript">
+        window.onresize = function(event) {
+             bethelSetViewport();
+        }
+
+        function bethelSetViewport() {
+            viewport = document.querySelector("meta[name=viewport]");
+            if(window.innerHeight > window.innerWidth){
+                viewport.setAttribute('content', 'width=600');
+            } else {
+                viewport.setAttribute('content', 'width=750');
+            }
+        }    
+    </script>
+EOT;
+}
+
+/**
+* Move jQuery to the footer
+*/
+function bethel_move_jquery() {
+    global $wp_scripts;
+    foreach ($wp_scripts->registered as $k => $v) {
+        if (substr($k, 0, 6) == 'jquery') {
+            if (isset($wp_scripts->registered[$k]->ver) && isset($wp_scripts->registered[$k]->src) && $wp_scripts->registered[$k]->deps) {
+                $ver = $wp_scripts->registered[$k]->ver;
+                $src = $wp_scripts->registered[$k]->src;
+                $deps = $wp_scripts->registered[$k]->deps;
+                wp_deregister_script ($k);
+                wp_register_script($k, $src, $deps, $ver, true);
+            }
+        }
+    }
 }
